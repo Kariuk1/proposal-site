@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Congratulations!</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1 class="celebrate-text">🎉 Congratulations on marrying Oistin! 🎉</h1>
+
+<canvas id="fireworks"></canvas>
+
+<script>
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function random(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+function drawFirework() {
+    let x = random(0, canvas.width);
+    let y = random(0, canvas.height);
+
+    for (let i = 0; i < 50; i++) {
+        ctx.fillStyle = `hsl(${random(250, 300)}, 100%, 70%)`;
+        ctx.beginPath();
+        ctx.arc(x + random(-50, 50), y + random(-50, 50), 3, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+setInterval(drawFirework, 500);
+</script>
+
+</body>
+</html>
